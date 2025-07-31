@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Posts</title>
+    <script src="https://kit.fontawesome.com/253ec0bd0c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <div class="main">
+        <!-- ----------sidebar----------- -->
+
+        <div class="sidebar">
+            <div class="nav">
+                <h1 class="side-title">T◔◔NFusi☉N</h1>
+                <div class="nav-option" style="opacity: 1;">
+                    <i class="fa-solid fa-house"></i>
+                    <a href="http://localhost:8080/posts">Home</a>
+                </div>
+
+                <div class="nav-option">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <a href="http://localhost:8080/users/:username">Search</a>
+                </div>
+
+                <div class="nav-option" style="opacity: 1;">
+                    <i class="fa-solid fa-square-plus"></i>
+                    <a class="addbtn" href="http://localhost:8080/posts/new">Create</a>
+                </div>
+
+                <div class="nav-option" style="opacity: 1;">
+                    <i class="fa-regular fa-user"></i>
+                    <a href="http://localhost:8080/users/:username">Profile</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- -------------------Home Posts------------ -->
+        <div class="home-posts">
+
+            <div class="login-btn">
+                <button href="http://localhost:8080/posts/login" class="login">Login</button>
+            </div>
+
+            <div class="fusion-class">
+                <h1 class="title">T◔◔NFusi☉N
+                </h1>
+                <p class="subtitle">
+                    Welcome to the world of Films.
+                    Explore where all form of Films Fusion.
+                </p>
+            </div>
+
+
+            <div class="card-posts">
+                <% for(post of posts){ %>
+                    <div class="post-card">
+                        <div class="wrapper">
+                            <img src="<%= post.image %>" class="cover-image" alt="image-uploaded" />
+                            <i class="fa-solid fa-list" onclick="toggleMenu(this)"></i>
+                        </div>
+
+                        <div class="creator">
+                            <img src="<%= post.profileImage %>" alt="profile-img">
+                            <div class="creator-text">
+                                <h3 class="user">@ <%= post.username %>
+                                </h3>
+                                <span>
+                                    <h4 class="content">
+                                        <%= post.content %>
+                                    </h4>
+                                </span>
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="dropdown-actions" style="display: none;">
+                            <div class="card-btn">
+                                <a href="http://localhost:8080/posts/<%=post.id%>">
+                                    Detail
+                                </a><br>
+                                
+                                <a href="http://localhost:8080/posts/<%=post.id%>/edit">
+                                    Edit
+                                </a><br>
+                            </div>
+
+                            <form method="post" action="/posts/<%=post.id%>?_method=DELETE">
+                                <button class="delbtn">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <% } %>
+
+            </div> <!--card-post div-->
+
+            <br><br>
+            <!-- <a class="addbtn" href="http://localhost:8080/posts/new">Add Post</a> -->
+
+        </div> <!--Home post-->
+    </div> <!--main div-->
+
+    <!-- <footer class="footer">
+
+                <a class="home">   <i class="fa-solid fa-house" style="color: #dfdb72;"></i></a>
+                <a class="search"> <i class="fa-solid fa-magnifying-glass" style="color: #f2e982;"></i></a>
+                <a class="add">    <i class="fa-solid fa-square-plus" style="color: #a2b6d7;"></i> </a>
+                <a class="profile"><i class="fa-regular fa-user" style="color: #e3e64c;"></i></a>
+    
+            </footer> -->
+</body>
+
+<script>
+
+    function toggleMenu(icon) {
+        const card = icon.closest('.post-card');
+        const dropdown = card.querySelector('.dropdown-actions');
+        dropdown.style.display = dropdown.style.display === 'none' || dropdown.style.display === ''
+            ? 'block'
+            : 'none';
+    }
+
+</script>
+
+</html>

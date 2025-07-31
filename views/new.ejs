@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Post</title>
+    <script src="https://kit.fontawesome.com/253ec0bd0c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <div class="Form-container">
+
+        <div class="card-Form">
+            <form method="post" action="/posts" enctype="multipart/form-data">
+                <h2>Create Post</h2>
+                <p>Have something to post? Why wait?Post it Out.</p>
+                <br>
+
+                <div class="input-group">
+                    <input placeholder="Enter username" name="username" />
+                    <br><br>
+                </div>
+
+                <div class="input-group">
+                    <textarea rows="10" cols="20" placeholder="Enter Caption" name="content">
+                    </textarea><br><br>
+                </div>
+
+                <!-- + Icon Upload Section -->
+                <div class="upload-wrapper">
+                    <label for="post-img-upload" class="upload-label">+</label>
+                    <input type="file" id="post-img-upload" name="postImage" class="upload-input" accept="image/*">
+                    <span class="file-name" id="post-file-name">No image selected 
+                        <br>for Post</span>
+
+                    <!-------- Profile Image: ---------- -->
+                    <label for="profile-img-upload" class="upload-label">+</label>
+                    <input type="file" id="profile-img-upload" name="profileImage" class="upload-input" accept="image/*">
+                    <span class="file-name" id="profile-file-name">No image selected 
+                        <br>for Profile</span>
+                    
+                </div>
+                <br>
+
+                <button type="submit" class="cbtn">
+                    Submit <i class="fas fa-solid fa-arrow-right" style="color: black;"></i>
+                </button>
+
+            </form>
+        </div>
+    </div>
+</body>
+
+<script>
+
+    const postInput = document.getElementById('post-img-upload');
+    const postFileName= document.getElementById('post-file-name');
+
+    const profileInput = document.getElementById('profile-img-upload');
+    const profileFileName = document.getElementById('profile-file-name');
+
+    profileInput.addEventListener('change', () => {
+    if (profileInput.files.length > 0) {
+        profileFileName.textContent = profileInput.files[0].name;
+    } else {
+        profileFileName.textContent = 'No image selected for Profile';
+    }
+});
+
+    postInput.addEventListener('change', () => {
+        if (postInput.files.length > 0) {
+            postFileName.textContent = postInput.files[0].name;
+        } else {
+            postFileName.textContent = 'No image selected for Post';
+        }
+    });
+
+</script>
+
+</html>

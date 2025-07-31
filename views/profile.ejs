@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> @<%= username %>'s Profile</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        h1{
+            color:aliceblue;
+        }
+        .up-creator{
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .up-creator img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 45px;
+            margin-left: 45px;
+            border: 2px solid #DDF247;
+        }
+        .up-creator-text {
+            color: cornsilk;
+            font-style: italic;
+        }
+
+        .post {
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            height: 350px;
+            width: 350px;
+        }
+
+        .cover-image {
+            width: 100%;
+            max-height: 300px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .creator {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .creator img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 2px solid #DDF247;
+        }
+
+        .creator-text {
+            font-family:sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <% if (posts.length> 0) { %>
+        <% posts.forEach(post=> { %>
+            <h1>Profile of <%= post.username %></h1><br><br>
+
+           <div class="up-creator">
+                    <img src="<%= post.profileImage %>" alt="Profile Image">
+                    <div class="up-creator-text">
+                        
+                        <h3> @<%= post.username %></h3>
+                        <!-- <p>
+                            <%= post.content %>
+                        </p> -->
+                    </div>
+            </div>
+
+
+
+            <div class="post">
+                <img src="<%= post.image %>" class="cover-image" alt="Post Image">
+                <div class="creator">
+                    <img src="<%= post.profileImage %>" alt="Profile Image">
+                    <div class="creator-text">
+                        <h3>@<%= post.username %>
+                        </h3>
+                        <p>
+                            <%= post.content %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+                <% } else { %>
+                    <p>No posts yet by this user.</p>
+                    <% } %>
+
+</body>
+
+</html>

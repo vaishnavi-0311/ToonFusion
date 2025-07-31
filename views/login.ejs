@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="https://kit.fontawesome.com/253ec0bd0c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/style.css">
+
+    <style>
+        .login-container {
+            padding: 50px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .Login-Form {
+            background: #302d2d;
+            padding: 20px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 400px;
+            text-align: left;
+            box-shadow: 0 0 15px rgba(203, 185, 231, 0.3);
+        }
+        h2, p{
+            color:#effb95;
+        }
+        .input-group {
+            margin-bottom: 15px;  
+        }
+        .input-group input{
+            width: 90%;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            background:#afafb7;
+            color: #292828;
+            font-size: 1.2em;
+            font-style: italic;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="login-container">
+
+        <div class="Login-Form">
+            <form method="post" action="/posts" enctype="multipart/form-data">
+                <h2>Login</h2>
+                <p>Not yet Registered?<a href="">Register</a></p>
+                <br>
+                <div class="input-group">
+                    <input placeholder="Enter username" name="username" />
+                    <br><br>
+                    <input placeholder="Enter Password" name="Password" />
+                    <br><br>
+                </div>
+                <button type="submit" class="cbtn">
+                    Login <i class="fas fa-solid fa-arrow-right" style="color: black;"></i>
+                </button>
+</body>
+</html>
